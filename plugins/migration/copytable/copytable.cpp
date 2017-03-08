@@ -1214,7 +1214,7 @@ MySQLCopyDataSource::MySQLCopyDataSource(const std::string &hostname, int port, 
   }
   logInfo("Connection to MySQL opened\n");
 
-  std::string q = "SET NAMES 'utf8'";
+  std::string q = "SET NAMES 'utf8mb4'";
   if (mysql_real_query(&_mysql, q.data(), (unsigned long)q.length()) != 0)
     throw ConnectionError(q, &_mysql);
 }
@@ -1467,7 +1467,7 @@ void MySQLCopyDataTarget::init() {
   } else
     _max_long_data_size = _max_allowed_packet;
 
-  std::string q = "SET NAMES 'utf8'";
+  std::string q = "SET NAMES 'utf8mb4'";
   if (mysql_real_query(&_mysql, q.data(), (unsigned long)q.length()) != 0)
     throw ConnectionError(q, &_mysql);
 
